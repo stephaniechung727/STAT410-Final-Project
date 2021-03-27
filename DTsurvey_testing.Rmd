@@ -1,0 +1,257 @@
+---
+title: "Survey"
+output: pdf_document
+---
+
+```{r}
+# library for data wrangling and ggplot
+library(tidyverse)
+
+# read in DT survey answers
+survey = read.csv("DTsurvey.csv")
+
+# list of grades for condition to compare to
+grades = c("A+","A","A-","B+","B","B-","C+","C","C-")
+
+# initialize empty vector
+# nongrades = NULL
+# grades = NULL
+
+# total sample size
+samplesize = nrow(survey)
+
+# dataframe containing students that entered their postal codes
+postalcodes = survey[!(is.na(survey$postal.code)),]
+
+#nongamers = survey[survey$gamer.yes.or.no.=="no",]
+
+# students that didn't fill in average grades
+# nagrades = survey[is.na(survey$avg.lettergrade),]
+
+# filled grades
+# filledgrades = survey[!(is.na(survey$avg.lettergrade)), ]
+
+# took out weird answers that students put and combined with NA grades
+nagrades = survey[!(survey$avg.lettergrade %in% grades),]
+
+# students that properly filled in grades
+propergrades = survey %>% 
+  filter_at(vars("avg.lettergrade"),any_vars(. %in% grades))
+
+# gamers with filled in grades
+gamers = propergrades[propergrades$gamer.yes.or.no. == "yes",]
+
+# nongamers with filled in grades
+nongamers = propergrades[propergrades$gamer.yes.or.no. == "no",]
+
+# 106 gamers that properly filled grades
+nrow(gamers)
+
+# 8 non gamers that properly filled grades
+nrow(nongamers)
+
+# counts of nongamers grades
+nongamers_counts = as.data.frame(table(nongamers$avg.lettergrade))
+
+# counts of gamers grades 
+
+gamers_counts = as.data.frame(table(gamers$avg.lettergrade))
+
+# adding a column of counts
+gamers$count = 1
+
+# fixed error 
+
+gamers[7,"time.played"] = "16+"
+
+# group up average grade and time played
+grouped_gamers_timeplayed = gamers %>% select(avg.lettergrade,time.played,count) %>%
+  group_by(avg.lettergrade,time.played) %>% summarise(Freq = sum(count))
+
+# student didn't specify time played
+grouped_gamers_timeplayed[23,]
+
+# remove student with no time specificed 
+grouped_gamers = grouped_gamers_timeplayed[-23,]
+
+# remove NA time played from gamers
+gamers_plot = gamers[-5,]
+
+# reorder the levels of letter grades for gamers
+
+gamers_plot$avg.lettergrade = factor(gamers_plot$avg.lettergrade, levels = grades)
+
+# reorder the levels of time.played for gamers
+gamers_plot$time.played = factor(gamers_plot$time.played, 
+                                 levels = c("1 to 5", "6 to 10", "10 to 15", "16+"))
+
+# changed the error from 10 to 15 to 11 to 15
+gamers_plot$time.played = gsub("10 to 15", "11 to 15", gamers_plot$time.played)
+```
+
+
+
+```{r}
+# library containing unique color values 
+library(RColorBrewer)
+# plot with points of gamers letter grades and frequency grouped by time played
+
+(p1 = ggplot(grouped_gamers, aes(x = avg.lettergrade, y = Freq, 
+                                 color = time.played)) + geom_point())
+
+# bar plot of gamers with letter grades and frequency grouped by time played
+(p2 = ggplot(gamers_plot, aes(x = avg.lettergrade, fill = time.played)) + 
+    geom_bar(position = "dodge") + scale_fill_brewer(palette = "RdBu") + 
+    labs(x = "Letter Grade", y = "Number of Students", 
+         title = "DT Students Letter Grades and Time Spent Gaming") + 
+    guides(fill = guide_legend(title = "Time Spent Gaming")))
+```
+
+```{r}
+# change all letter grades to just a whole letter
+gamers_plot$avg.lettergrade = gsub("[\\+\\-]","",gamers_plot$avg.lettergrade)
+
+(p3 = ggplot(gamers_plot, aes(x = avg.lettergrade, fill = time.played)) + 
+    geom_bar(position = "dodge") + scale_fill_brewer(palette = "RdBu") + 
+    labs(x = "Letter Grade", y = "Number of Students", 
+         title = "DT Students Letter Grades and Time Spent Gaming") + 
+    guides(fill = guide_legend(title = "Time Spent Gaming")))
+```
+
+```{r}
+# number of students per time played
+
+freq_timeplayed = 
+  gamers_plot %>% select(time.played,count) %>% group_by(time.played) %>% summarise(freq = sum(count))
+```
+
+
+```{r}
+# change , in one of the answers to a /
+
+gamers_plot$most.played.game = gsub(",","/",gamers_plot$most.played.game)
+
+
+# frequency of games played
+
+mostgamesplayed = gamers_plot %>% select(most.played.game,count) %>% 
+  group_by(most.played.game) %>% summarise(freq = sum(count))
+
+# proportion of the gamer students of this survey that play these games
+mostgamesplayed$prop = mostgamesplayed$freq/nrow(gamers_plot)
+
+# top games sorted by most popular games in the school
+top_games_sorted = mostgamesplayed %>% arrange(desc(freq))
+```
+
+```{r}
+# drop postal codes since about half of students didn't fill in
+gamers_plot = gamers_plot %>% select(-postal.code)
+```
+
+```{r}
+library(survey)
+
+
+```
+
+
+# for DT surveys: 
+
+## bias 
+
+- students might not know what being a casual and competitive gamer is, some students 
+put down themselves down as a competitive player when their favourite game is a 
+casual game
+
+```{r}
+# competitive gamers but with casual games
+gamers[c(58,59,66,80),c(10,11)]
+```
+
+
+- a lot of students didn't want to or know what their postal codes are
+
+```{r}
+# number of students who didn't put their postal code down
+nrow(survey)-nrow(postalcodes)
+```
+
+```{r}
+# students that wrote don't know or no or wrote a wrong postal code
+postalcodes[c(7,10,13,28,34),"postal.code"]
+```
+
+
+- some students didn't want to put in their grades, also students could potentially 
+lie
+
+```{r}
+# students that didn't put down grades or wrote something else
+nagrades
+```
+
+
+- some nongamers wrote down a most played game even though they said they aren't a gamer
+
+
+```{r}
+# nongamers playing games
+nongamers[c(4,7),]
+```
+
+
+- some students wrote a couple of most played games, didn't choose just one
+
+```{r}
+# students with multiple most played games
+grep("/",top_games_sorted$most.played.game,value = TRUE)
+```
+
+
+- some students play both on the weekdays and weekends so they circled both, 
+should've added both as an option
+
+```{r}
+gamers_plot[gamers_plot$weekday.or.weekend=="both",]
+```
+
+
+- some students misinterpreted single or multiplayer question as playing by 
+themselves or with friends 
+
+```{r}
+gamers_plot[c(78,87,94,105),c("single.or.multi","most.played.game")]
+```
+
+- should have included both as an answer for the single or multiplayer question 
+as some games have both
+
+```{r}
+# just one gamer with both in single or multiplayer question
+gamers[gamers$single.or.multi == 'both',]
+```
+
+## limitations
+
+- survey asks for 6 to 10 or 10 to 15, should've been 11 to 15 but not much 
+of a limitation because students generally know the range of hours, they play 
+for example, if they think they play less than 10, they'll put down 6 to 10, if 
+they think they play more than 10 but less than 16+ then they'll put 10 to 15
+
+- ran into an issue where the term just began thus no test marks or grades were 
+available to me thus have to add in alternative questions but forgot to add in 
+questions about age and gender but added in postal codes and average grades
+
+
+- grades at DT for gr8 were beginning, developing, applying, extending
+(C-, C, B, A)
+
+- some students wrote in between so i did this,
+
+beginning/developing = C-,
+developing/applying = B-, 
+applying/extending = A-
+
+
+
