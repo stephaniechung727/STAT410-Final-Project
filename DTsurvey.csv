@@ -1,0 +1,123 @@
+id,age,gender,avg.lettergrade,gamer(yes or no),time.played,single.or.multi,weekday.or.weekend,before.or.after.HW,casual.or.competitive,most.played.game,fav.subject,platform,postal.code
+DT100,13,M,B,yes,6 to 10,multiplayer,weekend,after,competitive,roblox,Social Studies,pc,V5S
+DT101,13,M,C+,yes,16+,multiplayer,weekdays,after,competitive,gta and minecraft,Social Studies,pc,NA
+DT102,13,M,C+,no,0,NA,NA,NA,NA,NA,music,NA,NA
+DT103,13,M,B,yes,6 to 10,multiplayer,weekend,before,casual,minecraft,foods,mobile,NA
+DT104,13,F,A,yes,1 to 5,single,weekend,after,casual,Hay day,science,mobile,NA
+DT105,13,M,B+,yes,NA,multiplayer,weekdays,after,competitive,fortnite,drama,pc,NA
+DT106,13,M,B,yes,1 to 5,single,weekdays,after,casual,"um street food games, COD",Month,mobile,V5P
+DT107,13,NA,NA,no,NA,NA,NA,NA,NA,NA,NA,NA,NA
+DT108,13,M,B,yes,16 or more,multiplayer,weekdays,after,casual,destiny 2,foods,pc,V5P
+DT109,13,F,C+,yes,1 to 5,single,weekend,before,casual,cod,art,console,NA
+DT110,13,M,8,no,1 to 5,single,weekend,after,casual,cooking game,foods,NA,NA
+DT111,13,F,A,yes,6 to 10,single,weekend,after,casual,sims 4,Social Studies,console,V5S
+DT112,13,F,B+,yes,10 to 15,multiplayer,weekend,after,casual,sky: children of the light,Art,mobile,NA
+DT113,13,F,A,yes,6 to 10,single,weekend,both,casual,cat quest 2,math,pc,NA
+DT114,13,M,A,yes,1 to 5,multiplayer,weekdays,after,casual,valorant,foods,pc,NA
+DT115,13,M,A,yes,16+,single,weekend,both,casual,terraria,music,pc,NA
+DT116,13,M,B,yes,6 to 10,multiplayer,both,before,competitive,valorant,foods,pc,V5P
+DT117,13,M,B,yes,16+,multiplayer,weekend,after,competitive,csgo,math,pc,V5X
+DT118,13,M,C+,yes,1 to 5,multiplayer,weekdays,after,casual,fortnite,foods,console,V23
+DT119,13,M,C+,yes,6 to 10,multiplayer,weekend,after,competitive,minecraft,math,pc,V5P
+DT120,13,F,C,yes,1 to 5,multiplayer,weekend,after,casual,roblox,foods/home ec,mobile,V5W
+DT121,13,F,B+,yes,16+,both,weekend,after,competitive,roblox,cooking,mobile,NA
+DT122,13,F,B+,yes,6 to 10,multiplayer,weekdays,after,competitive,among us,foods,pc,NA
+DT123,13,M,C,yes,10 to 15,multiplayer,weekdays,before,casual,roblox,english,pc,NA
+DT124,13,F,B,yes,6 to 10,multiplayer,weekend,before,casual,among us/roblox,art,mobile,NA
+DT125,13,F,B,yes,6 to 10,multiplayer,weekend,after,casual,sky: children of the light,art,mobile,NA
+DT126,13,F,C+,yes,6 to 10,single,weekdays,after,casual,roblox,cooking,mobile,NA
+DT127,13,M,B,yes,16+,multiplayer,weekdays,after,competitive,rocket league,art,pc,don’t know
+DT128,13,M,C-,yes,1 to 5,multiplayer,both,after,both,minecraft,Social Studies,pc,NA
+DT129,13,M,A-,yes,1 to 5,multiplayer,weekend,before,competitive,valorant,math,pc,V5P
+DT130,13,M,B,yes,16+,multiplayer,weekdays,before,competitive,valorant,Social Studies,pc,V5P
+DT131,13,M,C,yes,1 to 5,multiplayer,weekend,after,competitive,minecraft,PE,pc,NA
+DT132,13,M,Pass,yes,1 to 5,single,weekend,before,casual,modded minecraft,math,pc,NA
+DT133,13,F,C-,yes,10 to 15,multiplayer,weekdays,before,casual,among us,art,mobile,NA
+DT134,13,M,C,yes,16+,multiplayer,weekdays,before,casual,genshin impact,math,pc,NA
+DT135,13,M,A,yes,1 to 5,multiplayer,weekend,after,casual,battlefield 5,history,console,NA
+DT136,13,M,C,yes,6 to 10,multiplayer,weekend,before,casual,roblox,drama,mobile,NA
+DT137,13,F,A,yes,1 to 5,multiplayer,weekend,after,casual,super mario 35,music,console,NA
+DT138,13,F,B,yes,1 to 5,single,weekdays,after,casual,8 pool,foods,mobile,NA
+DT139,13,M,C+,yes,16+,multiplayer,weekend,after,competitive,MLBB/Brawl Stars,none,mobile,don’t know
+DT140,13,NA,NA,no,NA,NA,NA,NA,NA,NA,NA,NA,NA
+DT141,13,M,B,yes,10 to 15,multiplayer,weekdays,after,competitive,valorant,math,pc,NA
+DT142,13,M,C+,yes,16+,multiplayer,weekdays,after,competitive,R6 Siege,french,pc,V5X
+DT143,13,M,C+,yes,1 to 5,multiplayer,weekend,after,competitive,"fortnite,minecraft, and valorant",math,pc,NA
+DT250,14,M,NA,yes,6 to 10,multiplayer,weekend,after,casual,lol,food,mobile,NA
+DT251,14,M,B,yes,10 to 15,multiplayer,weekend,after,NA,lol,PE,pc,5V4
+DT252,14,M,C+,yes,16+,multiplayer,weekdays,before,competitive,warzone,science,console,NA
+DT253,14,M,A,yes,6 to 10,multiplayer,weekend,after,casual,genshin impact,science,mobile,V5P
+DT254,14,M,C,yes,16+,multiplayer,weekdays,after,competitive,valorant,Social Studies,pc,NA
+DT255,14,M,B,yes,1 to 5,single,both,after,competitive,valorant,Social Studies,mobile,V5X
+DT256,14,F,C-,yes,1 to 5,multiplayer,weekdays,after,casual,roblox,foods,mobile,NA
+DT257,14,M,B,yes,1 to 5,multiplayer,weekend,after,casual,mobile legends,english,mobile,NA
+DT258,14,F,B,yes,16+,single,weekend,before,competitive,genshin impact/destiny child,arts,pc,V5R
+DT259,14,M,B,yes,1 to 5,multiplayer,weekend,after,competitive,2K,foods,console,V5X
+DT260,14,F,B-,yes,1 to 5,multiplayer,weekend,after,competitive,smash bros,mandarin,console,NA
+DT261,14,F,A,yes,10 to 15,multiplayer,weekdays,before,competitive,valorant,science,pc,V5P
+DT262,14,F,A+,no,NA,NA,NA,NA,NA,NA,arts,NA,NA
+DT263,14,M,C,yes,10 to 15,multiplayer,weekend,before,competitive,cod,math,console,NA
+DT264,14,M,B,yes,1 to 5,multiplayer,weekend,after,NA,Nhl 21,math,console,NA
+DT265,14,M,A,yes,1 to 5,multiplayer,weekend,after,competitive,cod,Social Studies,console,NA
+DT266,14,M,B,yes,10 to 15,multiplayer,weekend,after,both,valorant,math,all,NA
+DT267,14,M,NA,yes,6 to 10,single,weekend,after,NA,shadow of the second,Social Studies,pc,V5P
+DT268,14,M,B,yes,6 to 10,multiplayer,weekend,after,casual,ninja storm 4,science,console,V5P
+DT269,14,M,A-,yes,1 to 5,multiplayer,weekend,after,competitive,cod/gta,math,console,NA
+DT270,14,M,B,yes,1 to 5,multiplayer,weekend,before,casual,cod,Social Studies,console,V5P
+DT271,14,M,B+,yes,16+,multiplayer,weekend,after,competitive,fivem,math,pc,V4C
+DT272,14,M,B,yes,16+,multiplayer,weekend,after,competitive,gta,food,console,V5P
+DT500,17,M,B-,yes,6 to 10,multiplayer,weekend,before,casual,valorant,science,pc,V5W
+DT501,17,M,B+,yes,1 to 5,multiplayer,weekend,before,casual,lol,philosophy,pc,V5N
+DT502,17,M,B,yes,16+,single,weekend,before,casual,RDR2,film studies,console,no
+DT503,17,M,B-,yes,10 to 15,multiplayer,weekdays,before,casual,lol,philosophy,pc,V5S1K3
+DT504,17,M,A,yes,16+,multiplayer,both,before,competitive,R6 Siege,math,pc,NA
+DT505,17,F,A+,no,NA,NA,NA,NA,NA,NA,math,NA,NA
+DT506,17,M,A+,yes,6 to 10,multiplayer,weekend,before,competitive,mobile legends,dance,mobile,V5P
+DT507,17,F,A-,yes,10 to 15,multiplayer,weekend,before,competitive,genshin impact,english,pc,NA
+DT508,17,M,NA,yes,6 to 10,multiplayer,weekend,after,casual,valorant,Social Studies,pc,V5N
+DT509,17,F,B+,yes,1 to 5,multiplayer,weekend,after,competitive,mario kart,science,console,V5P
+DT510,17,M,B+,yes,1 to 5,multiplayer,weekend,before,casual,cod,biology,console,V5X
+DT511,17,NA,NA,no,NA,NA,NA,NA,NA,NA,NA,NA,NA
+DT512,17,M,A,yes,1 to 5,multiplayer,weekend,before,competitive,clash of clans,not sure,mobile,don’t know
+DT513,17,F,B+,yes,6 to 10,multiplayer,weekdays,before,competitive,lol,history,pc,NA
+DT514,17,M,A,yes,16+,multiplayer,weekend,after,competitive,csgo,graphics,pc,NA
+DT515,17,M,A,yes,16+,multiplayer,weekend,before,competitive,lol,math,pc,NA
+DT516,17,F,C+,yes,6 to 10,multiplayer,weekend,before,casual,lol,chemistry,pc,V5S
+DT517,17,M,C,yes,16+,multiplayer,weekdays,after,casual,cod,engineering,pc,V5N
+DT518,17,F,B,yes,16+,multiplayer,both,after,casual,minecraft,math,mobile,NA
+DT519,17,M,C+,yes,1 to 5,single,weekend,after,casual,cod,english,mobile,V5P
+DT520,17,M,A,yes,6 to 10,multiplayer,weekdays,after,competitive,osu,english,pc,NA
+DT521,17,M,B+,yes,16+,multiplayer,weekend,before,casual,don't have one played more than others,math,pc,V5P
+DT522,17,M,A-,yes,10 to 15,single,weekdays,before,competitive,lol,Social Studies,pc,V5P
+DT523,17,F,A-,yes,16+,multiplayer,weekend,before,competitive,toothbrusing simulator,Social Studies,pc,NA
+DT524,17,F,A,yes,1 to 5,single,weekend,before,casual,among us,film production,mobile,NA
+DT525,17,F,A,yes,1 to 5,single,weekend,before,casual,don't remember,graphics,mobile,V5V
+DT526,17,M,C+,yes,10 to 15,multiplayer,weekdays,after,casual,cod,science,console,V5P
+DT527,17,F,A,yes,10 to 15,multiplayer,weekend,before,casual,roblox,animations,pc,V5M
+DT528,17,F,B+,yes,1 to 5,single,weekend,after,casual,animal crossing new horizons,chemistry,console,V5P
+DT529,17,M,B+,yes,16+,multiplayer,weekdays,before,casual,lol,english,pc,V5P
+DT530,17,F,A,yes,1 to 5,multiplayer,weekend,after,casual,among us,chemistry,mobile,V5P
+DT531,17,M,B+,yes,1 to 5,single,weekend,after,casual,pubg mobile,nothing,mobile,NA
+DT532,17,M,A,yes,10 to 15,multiplayer,weekdays,after,competitive,king and glory,chemistry,mobile,NA
+DT533,17,F,B-,yes,1 to 5,multiplayer,weekend,after,competitive,valorant,environmental science,pc,V5Z
+DT534,17,M,C+,no,1 to 5,single,weekend,after,casual,bakery story,dance,NA,NA
+DT535,17,M,A+,yes,1 to 5,single,weekdays,after,casual,totally accurate battle sim/pokemon showdown,business,pc,V5S
+DT536,17,F,A,yes,1 to 5,multiplayer,weekend,after,casual,mario kart,business,console,NA
+DT537,17,F,C,yes,10 to 15,multiplayer,weekdays,before,casual,apex legends,biology,pc,V5W
+DT538,17,F,B,no,NA,NA,NA,NA,NA,NA,music,NA,V5P
+DT539,17,F,A-,yes,1 to 5,multiplayer,weekend,after,casual,minecraft,biology,mobile,V5P
+DT540,17,F,A-,yes,16+,single,weekend,after,casual,genshin impact,drafting,mobile,V5G
+DT541,17,F,B+,yes,1 to 5,multiplayer,weekend,before,casual,cyber hunter/pubg,math,pc,V5R
+DT542,17,M,B-,yes,10 to 15,multiplayer,weekdays,before,casual,minecraft,engineering,mobile,V5P
+DT543,17,M,B+,yes,10 to 15,single,weekend,before,casual,parappa the rapper,business,console,V5P
+DT544,17,M,B,yes,1 to 5,single,weekdays,after,casual,skyrim,drama,console,NA
+DT545,17,M,B+,yes,1 to 5,multiplayer,weekend,after,competitive,pubg/little big planet,marketing,mobile,V5P
+DT546,17,F,A-,no,NA,NA,NA,NA,NA,NA,biology,NA,V6X
+DT547,17,F,A-,yes,6 to 10,multiplayer,weekend,after,casual,valorant,math,pc,V5P
+DT548,17,F,C+,yes,1 to 5,multiplayer,weekend,after,competitive,valorant,philosophy,pc,V5P1W6
+DT549,17,F,B+,yes,16+,multiplayer,weekdays,before,casual,valorant,math,pc,V5R
+DT550,17,M,B-,yes,6 to 10,single,weekend,before,competitive,splatoon 2,history,pc,V5X
+DT551,17,M,A,no,1 to 5,single,weekend,after,casual,among us,Social Studies,NA,V5X
+DT552,17,M,A-,no,NA,NA,NA,NA,NA,NA,physics,NA,V5S
+DT553,17,M,A+,yes,10 to 15,single,weekdays,before,competitive,Re:Zero,math,mobile,V5P
+DT554,17,M,C+,yes,1 to 5,single,weekdays,before,casual,genshin impact,drama,pc,NA
