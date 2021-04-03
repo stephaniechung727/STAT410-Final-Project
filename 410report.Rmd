@@ -1,0 +1,42 @@
+---
+title: "**Gamer Students**"
+author: 
+- Rajvir Sangha
+- Benson Ou-yang
+- Stephanie Chung
+
+abstract:
+  
+
+output: 
+  bookdown::pdf_document2:
+    extra_dependencies: "subfig"
+    fig_caption: yes
+    includes: 
+      in_header: my_header.tex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(fig.height=3.5, fig.path='Figs/', fig.pos = "H",
+                      echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+```{r package-options, include=FALSE}
+knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
+```
+
+# Introduction
+
+# Methods
+
+# Results
+
+# Conclusion
+
+# References
+
+# Appendix
