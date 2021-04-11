@@ -1,0 +1,57 @@
+ID,Age,Gender,Avg.lettergrade,Gamer(Y/N),Time.played,Single/Multi,Weekdays/Weekend,Before/After(HW),Casu/Comp,Most.played,Fav.subject,Platform,Postal Code
+FH01,15,M,A,1,6 to 10,Mutiplayer,Weekend,After,Competitive,Clash royal,"Math, Physics",Mobile,
+FH02,16,W,A,0,,,,,,,Biology,,
+FH03,16,W,B,0,,,,,,,,,
+FH04,16,W,A,0,,,,,,,"Social Studies, Law",,
+FH05,17,W,C,0,,,,,,,,,
+FH06,17,W,A,0,,,,,,,Social Studies,,
+FH07,16,W,A,0,,,,,,,,,
+FH08,16,M,B,1,16 or more,Multiplayer,Weekdays,Before,Competitive,Valorant,Math,PC,
+FH09,16,M,A,1,6 to 10,Multiplayer,Weekdays,After,Competitive,Fortnite,Science,Console,
+FH10,17,W,A,0,,,,,,,Creative Writing,,
+FH11,15,M,A,1,16 or more,Multiplayer,Weekend,Before,Casual,"Call of Duty, Rocket league",Auto Mechanics,Console,
+FH12,17,M,C,1,6 to 10,Multiplayer,Weekend,Before,Competitive,Fortnite,Math,Console,
+FH13,17,W,A,0,,,,,,,Biology,,
+FH14,17,M,A,1,1 to 5,Single,Weekend,After,Casual,NHL 21,English,Console,
+FH15,18,W,B,0,,,,,,,"Biology, Geology",,
+FH16,17,M,B,1,1 to 5,Multiplayer,Weekdays,Before,Competitive,PUBG,Math,Mobile,
+FH17,17,W,B,0,,,,,,,English,,
+FH18,17,W,B,0,,,,,,,"Social Justice, Law, Geology",,
+FH19,18,W,A,0,,,,,,,English,,
+FH20,17,W,B,0,,,,,,,Math,,
+FH21,18,W,A,1,6 to 10,Multiplayer,Weekend,Before,Competitive,Mobile Legends,Chemistry,Mobile,
+FH22,18,W,A,1,6 to 10,Multiplayer,Weekend,After,Competitive,Apex Legends,Geography,Console,
+FH23,16,M,A,1,11 to 15,Multiplayer,Weekend,Before,Casual,Call of Duty,Geography,Console,
+FH24,17,W,B,1,1 to 5,Multiplayer,Weekend,After,Casual,PUBG,"French, Geography",Mobile,
+FH25,16,W,A,1,1 to 5,Multiplayer,Weekend,Before,Casual,Need for Speed,Human Geography,Console,
+FH26,17,W,A,1,1 to 5,Multiplayer,Weekdays,Before,Casual,Among Us,"English, Human Geography",Mobile,
+FH27,17,W,A,0,,,,,,,Math,,
+FH28,17,M,B,1,1 to 5,Multiplayer,Weekend,After,Casual,Call of Duty,Geography,Console,
+FH29,18,M,C,1,16 or more,Multiplayer,Weekdays,After,Competitive,Payday 2,Science,Console,
+FH30,17,M,C,1,1 to 5,Multiplayer,Weekend,After,Competitive,Fortnite,Auto Mechanics,Mobile,
+FH31,16,W,A,1,1 to 5,Multiplayer,Weekdays,After,Casual,Among Us,Math,Mobile,
+FH32,16,W,A,1,1 to 5,Multiplayer,Weekend,After,Casual,Among Us,French,Mobile,
+FH33,16,W,A,1,1 to 5,Multiplayer,Weekend,After,Competitive,Super Smash Bros,Science,Console,
+FH34,16,W,A,1,1 to 5,Single,Weekend,After,Casual,Animal Crossing,Science,Console,
+FH35,16,W,B,1,1 to 5,Single  ,Weekend,After,Casual,Animal Crossing,Science,Console,V3W 6E1
+FH36,17,W,B,1,1 to 5,Single,Weekend,Before,Casual,GTA 5,Law,Console,V3W 6K8
+FH37,17,M,B,0,,,,,,,,,V3W 2S9
+FH38,16,M,B,1,6 to 10,Single ,Weekend,Before,Casual,Witcher 3 ,"20th Century World History, Media Arts",PC,V3W 5Z7
+FH39,16,M,C,1,11 to 15,Multiplayer,Weekdays,Before,Competitive,Last of Us 2,Math,PC, V3T 1A8
+FH40,15,W,A,0,,,,,,,,,V3W 1V5
+FH41,17,M,B,1,16 or more,Multiplayer,Weekdays,After,Competitive,Call of Duty,Physics,Console,V3W 8G2
+FH42,17,W,B,0,,,,,,,"English, Psychology, History",,V3W 5J4
+FH43,16,M,C,1,1 to 5,Multiplayer,Weekend,After,Competitive,Rocket League,Band,PC,V3W 5X7
+FH44,17,W,B,0,,,,,,,Social Studies,,V4N 1H6
+FH45,16,M,B,1,11 to 15,Multiplayer,Weekdays,Before,Casual,Heroes and generals ,History,PC,V3W 1L7
+FH46,16,W,B,1,1 to 5,Single,Weekdays,Before,Casual,Call of Duty,,Console,V3W 9L5
+FH47,16,M,A,1,1 to 5,Single ,Weekend,After,Casual,Forza Horizon 4,"Science, 20th Century World History",Console,V3W 2Z6
+FH48,16,M,B,1,11 to 15,Multiplayer,Weekdays,Before,Competitive,Valorant,Art,PC,V3S 9G5
+FH49,17,W,A,0,,,,,,,20th Century World History,,V3S 7W9
+FH50,18,M,A,1,6 to 10,Multiplayer,Weekend,Before,Casual,Valorant,"Math, Pre-calculus",PC,V3W 5X6
+FH51,17,M,A,1,6 to 10,Multiplayer,Weekend,After,Casual,"Fortnite, Rocket League",Math,PC,V3W 5J5
+FH52,17,W,B,1,1 to 5,Multiplayer,Weekdays,After,Casual,Call of Duty,Biology,PC,V3S 3E4
+FH53,17,M,B,1,6 to 10,Multiplayer,Weekend,After,Casual,Call of Duty,Biology,Console,V3R 2B5
+FH54,15,W,B,0,,,,,,,Social Studies,,
+FH55,15,W,A,1,6 to 10,Multiplayer,Weekdays,Before,Competitive,Clash Royale,Math,Mobile,
+FH56,16,W,A,0,,,,,,,Art,,
