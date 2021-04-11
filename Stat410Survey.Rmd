@@ -1,0 +1,225 @@
+---
+title: "Stat410Survey"
+author: "Rajvir Sangha, 301301767"
+date: "14/03/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Title page
+
+# Thank you page for the teachers who made this survey possible
+
+# Abstract
+
+# Introduction (Includes questions of interest)
+
+# Data description
+
+# Some visuals
+
+# Methods
+
+# Results
+
+# Conclusion
+
+
+
+```{r message=FALSE, warning=FALSE}
+# Import Libraries
+library(plyr)
+library(survey)
+library(ggplot2)
+library(tidyverse)
+library(patchwork)
+```
+
+
+```{r}
+# Reading the csv file, total n=56 students
+data <- read.csv(file = "Survey Data - SUM.csv", header = T)
+
+# Subset Gamer students, n=35
+gamerData <- subset(data, Gamer.Y.N.==1)
+
+# Subset Non-Gamer students, n=21
+nongamerData <- subset(data, Gamer.Y.N.==0)
+```
+
+
+
+
+
+```{r}
+count(data, c('Gender'))
+data %>% count(Gamer.Y.N., Age)
+```
+
+
+
+```{r echo=FALSE}
+Fig.1 <- (ggplot(data, aes(x = ID, y = Avg.lettergrade, color=Gender)) 
+      + geom_point(shape=18,size=2.5) 
+      + labs(x = "Students", y = "Letter Grades", title = "Students VS. Letter Grades", 
+             subtitle = "56 Frankhurt Secondary students' letter grades",tag = "Fig. 1")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.2 <- (ggplot(gamerData, aes(x = ID, y = Age, color=Gender)) 
+      + geom_point(shape=15,size=2) 
+      + labs(x = "Students", y = "Age", title = "Gamer Students VS. Ages", 
+             subtitle = "35 Frankhurt Secondary gamer students' ages",tag = "Fig. 2")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.3 <- (ggplot(gamerData, aes(x = ID, y = Time.played, color=Gender)) 
+      + geom_point(shape=16,size=2.5) 
+      + labs(x = "Students", y = "Time played", title = "Gamer Students VS. Time played", 
+             subtitle = "35 Frankhurt Secondary gamer students' time played",tag = "Fig. 3")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      + scale_y_discrete(limits=c("1 to 5","6 to 10","11 to 15","16 or more"))
+      )
+Fig.4 <- (ggplot(gamerData, aes(x = ID, y = Weekdays.Weekend, color=Gender)) 
+      + geom_point(shape=17,size=2.5) 
+      + labs(x = "Students", y = "Weekdays/Weekend", title = "Gamer Students VS. Weekdays/Weekend", 
+             subtitle = "35 Frankhurt Secondary gamer students play on weekdays or weekend",tag = "Fig. 4")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 12))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.5 <- (ggplot(gamerData, aes(x = ID, y = Before.After.HW., color=Gender)) 
+      + geom_point(shape=18,size=2.5) 
+      + labs(x = "Students", y = "Time played", title = "Gamer Students VS. Before/After Homework", 
+             subtitle = "35 Frankhurt Secondary gamer students play before or after homework",tag = "Fig. 5")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.6 <- (ggplot(gamerData, aes(x = ID, y = Casu.Comp, color=Gender)) 
+      + geom_point(shape=19,size=2.5) 
+      + labs(x = "Students", y = "Casual/Competitive", title = "Gamer Students VS. Casual/Competitive Type", 
+             subtitle = "35 Frankhurt Secondary gamer students are casual or competitive players",tag = "Fig. 6")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 13.5))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.7 <- (ggplot(gamerData, aes(x = ID, y = Platform, color=Gender)) 
+      + geom_point(shape=20,size=2.5) 
+      + labs(x = "Students", y = "Platform", title = "Gamer Students VS. Platform", 
+             subtitle = "35 Frankhurt Secondary gamer students' preferred platform",tag = "Fig. 7")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      + scale_y_discrete(limits=c("Mobile","PC","Console"))
+      )
+
+```
+
+
+
+
+
+
+
+```{r}
+# Figure 1
+Fig.1
+
+# Using the subset of gamer students called gamerData
+# Figures 2 through Figures 7 
+(Fig.2 / Fig.3); (Fig.4 / Fig.5); (Fig.6 / Fig.7)
+
+```
+
+
+
+
+
+Impressions on the dataset: 
+
+Fig.1 indicates that the majority of the students' grades lie in A's and B' and the few who are scoring C's are mainly Men.
+
+Fig.2 
+
+
+
+
+
+```{r}
+data$count =1
+cont.df = as.data.frame(gamerData %>% select(Avg.lettergrade,Time.played,count) %>% group_by(Avg.lettergrade,Time.played) %>% summarise(freq = sum(count)))
+cont.df
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
