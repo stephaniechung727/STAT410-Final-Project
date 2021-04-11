@@ -5,7 +5,9 @@ author:
 - Benson Ou-yang
 - Stephanie Chung
 
-abstract:
+abstract: In the recent years, the gaming industry has seen a huge spike in gamers as computers and consoles designed for an immersive experience have advanced significantly. 
+
+
   
 
 output: 
@@ -29,9 +31,54 @@ knitr::opts_chunk$set(fig.height=3.5, fig.path='Figs/', fig.pos = "H",
 knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
 ```
 
+
+```{r}
+# Import Libraries
+library(plyr)
+library(survey)
+library(ggplot2)
+library(tidyverse)
+library(patchwork)
+library(RColorBrewer)
+```
+
+```{r}
+survey = read.csv("DTsurvey.csv")
+```
+
+```{r}
+# Reading the csv file, total n=56 students
+data <- read.csv(file = "Survey Data - SUM.csv", header = T)
+# Subset Gamer students, n=35
+gamerData <- subset(data, Gamer.Y.N.==1)
+# Subset Non-Gamer students, n=21
+nongamerData <- subset(data, Gamer.Y.N.==0)
+```
+
+\newpage
+
+# Acknowledgement
+
+
 # Introduction
 
+This study aims to expand on the understanding of high school adolescents’ gaming behaviour and its impact on academic performance. Specifically, the cross-sectional study had four main aims. Our first aim was to examine whether gamer students who played videogames at different platforms and times scored higher than students who did not play any video games at all. Our second aim was to determine if there is a decline in gamer students grades from playing videogames for exceptionally long hours. Our third aim was to examine whether the results were consistent across all ages. Our final aim was to compare the grades of the genders (man and woman) for both categories of gamers and non-gamers.
+
+
+# Data Description
+
+```{r names-tab}
+# format tables side by side
+# https://stackoverflow.com/questions/38036680/align-multiple-tables-side-by-side
+
+knitr::kable(cbind(names(data),c("Students ID for FH or DT secondary schools","Student's age ranging 13-18", " Student's gender(man or woman)", "Student's grade(A to C range)", "Student's status as a gamer(1 for yes, 0 for no)", "Student's time spent playing in a week", "Preferred mode, singleplayer or multiplayer","Preferred day type, weekdays or weekend", "Preferred to play before or after schoolwork","Type of player, casual or competitive", "Student's most played videogame", "Student's favourite subject", "Preferred platform to play videogames", "Student's residential postal code")), format = "markdown", 
+             caption = "", col.names = c("Variable Name","Variable Definition"))
+```
+
 # Methods
+
+In early March 2021, 56 adolescents from Frank Hurt Secondary and 122 adolescents from David Thompson Secondary participated in the cross-sectional paper-and-pencil survey study (x% man). The students were from diverse cultural and socio-economic backgrounds, with ages ranging from 13 to 18 (Report mean age and sd of age). The response rate was close to perfect due to the design format where the selected teachers conducted the survey during class-time and all the students present participated. 
+
 
 # Results
 
@@ -40,3 +87,162 @@ knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
 # References
 
 # Appendix
+
+
+
+```{r}
+Fig.1 <- (ggplot(data, aes(x = ID, y = Avg.lettergrade, color=Gender)) 
+      + geom_point(shape=18,size=2.5) 
+      + labs(x = "Students", y = "Letter Grades", title = "Students VS. Letter Grades", 
+             subtitle = "56 Frankhurt Secondary students' letter grades",tag = "Fig. 1")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.2 <- (ggplot(gamerData, aes(x = ID, y = Age, color=Gender)) 
+      + geom_point(shape=15,size=2) 
+      + labs(x = "Students", y = "Age", title = "Gamer Students VS. Ages", 
+             subtitle = "35 Frankhurt Secondary gamer students' ages",tag = "Fig. 2")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.3 <- (ggplot(gamerData, aes(x = ID, y = Time.played, color=Gender)) 
+      + geom_point(shape=16,size=2.5) 
+      + labs(x = "Students", y = "Time played", title = "Gamer Students VS. Time played", 
+             subtitle = "35 Frankhurt Secondary gamer students' time played",tag = "Fig. 3")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      + scale_y_discrete(limits=c("1 to 5","6 to 10","11 to 15","16 or more"))
+      )
+Fig.4 <- (ggplot(gamerData, aes(x = ID, y = Weekdays.Weekend, color=Gender)) 
+      + geom_point(shape=17,size=2.5) 
+      + labs(x = "Students", y = "Weekdays/Weekend", title = "Gamer Students VS. Weekdays/Weekend", 
+             subtitle = "35 Frankhurt Secondary gamer students play on weekdays or weekend",tag = "Fig. 4")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 12))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.5 <- (ggplot(gamerData, aes(x = ID, y = Before.After.HW., color=Gender)) 
+      + geom_point(shape=18,size=2.5) 
+      + labs(x = "Students", y = "Time played", title = "Gamer Students VS. Before/After Homework", 
+             subtitle = "35 Frankhurt Secondary gamer students play before or after homework",tag = "Fig. 5")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.6 <- (ggplot(gamerData, aes(x = ID, y = Casu.Comp, color=Gender)) 
+      + geom_point(shape=19,size=2.5) 
+      + labs(x = "Students", y = "Casual/Competitive", title = "Gamer Students VS. Casual/Competitive Type", 
+             subtitle = "35 Frankhurt Secondary gamer students are casual or competitive players",tag = "Fig. 6")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 13.5))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      )
+Fig.7 <- (ggplot(gamerData, aes(x = ID, y = Platform, color=Gender)) 
+      + geom_point(shape=20,size=2.5) 
+      + labs(x = "Students", y = "Platform", title = "Gamer Students VS. Platform", 
+             subtitle = "35 Frankhurt Secondary gamer students' preferred platform",tag = "Fig. 7")
+      + theme(axis.title.x = element_text(vjust = 0, size = 15),axis.title.y = element_text(vjust = 2, size = 15))
+      + theme(axis.title = element_text(size = 15, color = "firebrick", face = "italic"))
+      + theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust = 1, size = 5))
+      + theme(legend.title = element_text(color = "chocolate",size = 11, face = "bold"))
+      + theme(panel.grid = element_blank())
+      + theme(panel.background = element_rect(fill = "gray97"))
+      + scale_color_manual(values = c("skyblue","pink"))
+      + scale_y_discrete(limits=c("Mobile","PC","Console"))
+      )
+```
+
+```{r fig1, fig.cap="Letter Grades and Gender of Frankhurt Students"}
+# Figure 1
+
+Fig.1
+
+```
+
+```{r fig23, fig.cap="Frankhurt Gamer Students' Age and Time Spent Gaming"}
+# Using the subset of gamer students called gamerData
+# Figures 2 through Figures 7 
+(Fig.2 / Fig.3)
+```
+
+```{r fig45, fig.cap="Frankhurt Gamer Students' Preference of Time of Playing"}
+(Fig.4 / Fig.5)
+```
+
+```{r fig67, fig.cap = "Frankhurt Gamer Students' Competiveness and Preferred Platform"}
+(Fig.6 / Fig.7)
+```
+
+```{r}
+grades = c("A+","A","A-","B+","B","B-","C+","C","C-")
+
+# students that properly filled in grades
+propergrades = survey %>% 
+  filter_at(vars("avg.lettergrade"),any_vars(. %in% grades))
+
+# gamers with filled in grades
+gamers = propergrades[propergrades$gamer.yes.or.no. == "yes",]
+
+# adding a column of counts
+gamers$count = 1
+
+# fixed error 
+
+gamers[7,"time.played"] = "16+"
+
+# remove NA time played from gamers
+gamers_plot = gamers[-5,]
+
+# reorder the levels of letter grades for gamers
+
+gamers_plot$avg.lettergrade = factor(gamers_plot$avg.lettergrade, levels = grades)
+
+
+# changed the error from 10 to 15 to 11 to 15
+gamers_plot$time.played = gsub("10 to 15", "11 to 15", gamers_plot$time.played)
+
+# reorder the levels of time.played for gamers
+gamers_plot$time.played = factor(gamers_plot$time.played, 
+                                 levels = c("1 to 5", "6 to 10", "11 to 15", "16+"))
+
+# change all letter grades to just a whole letter
+
+gamers_plot$avg.lettergrade = gsub("[\\+\\-]","",gamers_plot$avg.lettergrade)
+
+```
+```{r dtfig, fig.cap="Letter Grades and Time Spent Playing Video Games"}
+(p3 = ggplot(gamers_plot, aes(x = avg.lettergrade, fill = time.played)) + 
+    geom_bar(position = "dodge") + scale_fill_brewer(palette = "Reds") + 
+    labs(x = "Letter Grade", y = "Number of Students", 
+         title = "DT Students Letter Grades and Time Spent Gaming") + 
+    guides(fill = guide_legend(title = "Time Spent Gaming"))+
+    theme(panel.background = element_rect(fill = 'darkgray')))
+```
+
