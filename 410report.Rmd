@@ -1,9 +1,9 @@
 ---
 title: "**Gamer Students**"
 author: 
-- Rajvir Sangha
-- Benson Ou-yang
-- Stephanie Chung
+- Rajvir Sangha  
+- Benson Ou-yang  
+- Eui jeong Chung  
 
 abstract: In the recent years, the gaming industry has seen a huge spike in gamers as computers and consoles designed for an immersive experience have advanced significantly. 
 
