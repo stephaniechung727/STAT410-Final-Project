@@ -75,10 +75,35 @@ knitr::kable(cbind(names(data),c("Students ID for FH or DT secondary schools","S
              caption = "", col.names = c("Variable Name","Variable Definition"))
 ```
 
+See Figure \@ref(fig:fig1).
+
+See Figure \@ref(fig:fig23)
+
+See Figure \@ref(fig:fig45)
+
+See Figure \@ref(fig:fig67)
+
+See Figure \@ref(fig:dtfig)
+
 # Methods
 
 In early March 2021, 56 adolescents from Frank Hurt Secondary and 122 adolescents from David Thompson Secondary participated in the cross-sectional paper-and-pencil survey study (x% man). The students were from diverse cultural and socio-economic backgrounds, with ages ranging from 13 to 18 (Report mean age and sd of age). The response rate was close to perfect due to the design format where the selected teachers conducted the survey during class-time and all the students present participated. 
 
+See Equation \@ref(eq:OR)
+
+See Equation \@ref(eq:ORCI)
+
+\begin{equation}
+  \tag{Odds Ratio}
+   OR = \frac{w_1(n_2-w_2)}{w_2(n_1-w_1)}
+   (\#eq:OR)
+\end{equation}
+
+\begin{equation}
+  \tag{Log Odds Ratio Confidence Interval}
+  log(\frac{w_1(n_2-w_2)}{w_2(n_1-w_1)}) \pm Z_{1-\alpha/2}\sqrt{\frac{1}{w_1}+\frac{1}{n_1-w_1}+\frac{1}{w_2}+\frac{1}{n_2-w_2}}
+  (\#eq:ORCI)
+\end{equation}
 
 # Results
 
@@ -210,6 +235,9 @@ propergrades = survey %>%
 # gamers with filled in grades
 gamers = propergrades[propergrades$gamer.yes.or.no. == "yes",]
 
+# non gamers
+nongamers = propergrades[propergrades$gamer.yes.or.no. == "no",]
+
 # adding a column of counts
 gamers$count = 1
 
@@ -236,7 +264,10 @@ gamers_plot$time.played = factor(gamers_plot$time.played,
 
 gamers_plot$avg.lettergrade = gsub("[\\+\\-]","",gamers_plot$avg.lettergrade)
 
+nongamers$avg.lettergrade = gsub("[\\+\\-]","",nongamers$avg.lettergrade)
+
 ```
+
 ```{r dtfig, fig.cap="Letter Grades and Time Spent Playing Video Games"}
 (p3 = ggplot(gamers_plot, aes(x = avg.lettergrade, fill = time.played)) + 
     geom_bar(position = "dodge") + scale_fill_brewer(palette = "Reds") + 
@@ -244,5 +275,57 @@ gamers_plot$avg.lettergrade = gsub("[\\+\\-]","",gamers_plot$avg.lettergrade)
          title = "DT Students Letter Grades and Time Spent Gaming") + 
     guides(fill = guide_legend(title = "Time Spent Gaming"))+
     theme(panel.background = element_rect(fill = 'darkgray')))
+```
+
+```{r}
+test = gamers_plot
+test$avg.lettergrade = gsub("A",4,test$avg.lettergrade)
+test$avg.lettergrade = gsub("B",3,test$avg.lettergrade)
+test$avg.lettergrade = gsub("C",2,test$avg.lettergrade)
+test$avg.lettergrade = as.numeric(test$avg.lettergrade)
+
+# mean grade of all dt gamer students
+mean(test$avg.lettergrade)
+sd(test$avg.lettergrade)
+```
+
+```{r}
+ndt = nongamers
+
+ndt$avg.lettergrade = gsub("A",4,ndt$avg.lettergrade)
+ndt$avg.lettergrade = gsub("B",3,ndt$avg.lettergrade)
+ndt$avg.lettergrade = gsub("C",2,ndt$avg.lettergrade)
+ndt$avg.lettergrade = as.numeric(ndt$avg.lettergrade)
+
+# mean grade of all dt gamer students
+mean(ndt$avg.lettergrade)
+sd(ndt$avg.lettergrade)
+```
+
+
+```{r}
+gamerfh = gamerData
+
+gamerfh$Avg.lettergrade = gsub("A",4,gamerfh$Avg.lettergrade)
+gamerfh$Avg.lettergrade = gsub("B",3,gamerfh$Avg.lettergrade)
+gamerfh$Avg.lettergrade = gsub("C",2,gamerfh$Avg.lettergrade)
+gamerfh$Avg.lettergrade = as.numeric(gamerfh$Avg.lettergrade)
+
+mean(gamerfh$Avg.lettergrade)
+sd(gamerfh$Avg.lettergrade)
+
+
+```
+
+```{r}
+nfh = nongamerData
+
+nfh$Avg.lettergrade = gsub("A",4,nfh$Avg.lettergrade)
+nfh$Avg.lettergrade = gsub("B",3,nfh$Avg.lettergrade)
+nfh$Avg.lettergrade = gsub("C",2,nfh$Avg.lettergrade)
+nfh$Avg.lettergrade = as.numeric(nfh$Avg.lettergrade)
+
+mean(nfh$Avg.lettergrade)
+sd(nfh$Avg.lettergrade)
 ```
 
