@@ -288,8 +288,8 @@ gdt$avg.lettergrade = gsub("C",2,gdt$avg.lettergrade)
 gdt$avg.lettergrade = as.numeric(gdt$avg.lettergrade)
 
 # mean grade of all dt gamer students
-mean(test$avg.lettergrade)
-sd(test$avg.lettergrade)
+mean(gdt$avg.lettergrade)
+sd(gdt$avg.lettergrade)
 ```
 
 ```{r}
@@ -379,8 +379,49 @@ yhatbar_r
 <Standard Error for Each Estimators>
 
 
+```{r}
+# ratio estimator se of mean of gamer students
+y = list(gdt$avg.lettergrade,gamerfh$Avg.lettergrade)
+n = length(y)
+m = unlist(lapply(y,length))
+
+ybar = unlist(lapply(y,mean))
+sisq = unlist(lapply(y,var))
+that = M*ybar
+
+yhatbar_r = round(sum(that)/sum(M),2)
+col7 = (that-M*yhatbar_r)^2
+
+Mbar = mean(M)
+
+srsq =( 1/(n-1))*sum(col7)
+
+(se.yhatbar_r = round(sqrt(((1/Mbar^2)*(1-n/N)*srsq/n) + 
+                            ((1/(n*Mbar^2*N))*sum(M^2*(1-m/M)*(sisq/m)))),2))
+```
 
 
+```{r}
+# ratio estimator se of mean of non gamer students
+y = list(ndt$avg.lettergrade,nfh$Avg.lettergrade)
+
+n = length(y)
+m = unlist(lapply(y,length))
+
+ybar = unlist(lapply(y,mean))
+sisq = unlist(lapply(y,var))
+that = M*ybar
+
+yhatbar_r = round(sum(that)/sum(M),2)
+col7 = (that-M*yhatbar_r)^2
+
+Mbar = mean(M)
+
+srsq =( 1/(n-1))*sum(col7)
+
+(se.yhatbar_r = round(sqrt(((1/Mbar^2)*(1-n/N)*srsq/n) + 
+                            ((1/(n*Mbar^2*N))*sum(M^2*(1-m/M)*(sisq/m)))),2))
+```
 
 
 
