@@ -276,13 +276,16 @@ nongamers$avg.lettergrade = gsub("[\\+\\-]","",nongamers$avg.lettergrade)
     guides(fill = guide_legend(title = "Time Spent Gaming"))+
     theme(panel.background = element_rect(fill = 'darkgray')))
 ```
-
+  
+  
+<SRS Estimation of Average Grade of Gamer and Non-gamer students>  
+  
 ```{r}
-test = gamers_plot
-test$avg.lettergrade = gsub("A",4,test$avg.lettergrade)
-test$avg.lettergrade = gsub("B",3,test$avg.lettergrade)
-test$avg.lettergrade = gsub("C",2,test$avg.lettergrade)
-test$avg.lettergrade = as.numeric(test$avg.lettergrade)
+gdt = gamers_plot
+gdt$avg.lettergrade = gsub("A",4,gdt$avg.lettergrade)
+gdt$avg.lettergrade = gsub("B",3,gdt$avg.lettergrade)
+gdt$avg.lettergrade = gsub("C",2,gdt$avg.lettergrade)
+gdt$avg.lettergrade = as.numeric(gdt$avg.lettergrade)
 
 # mean grade of all dt gamer students
 mean(test$avg.lettergrade)
@@ -297,7 +300,7 @@ ndt$avg.lettergrade = gsub("B",3,ndt$avg.lettergrade)
 ndt$avg.lettergrade = gsub("C",2,ndt$avg.lettergrade)
 ndt$avg.lettergrade = as.numeric(ndt$avg.lettergrade)
 
-# mean grade of all dt gamer students
+# mean grade of all dt non-gamer students
 mean(ndt$avg.lettergrade)
 sd(ndt$avg.lettergrade)
 ```
@@ -311,10 +314,9 @@ gamerfh$Avg.lettergrade = gsub("B",3,gamerfh$Avg.lettergrade)
 gamerfh$Avg.lettergrade = gsub("C",2,gamerfh$Avg.lettergrade)
 gamerfh$Avg.lettergrade = as.numeric(gamerfh$Avg.lettergrade)
 
+# mean grade of all fh gamer students
 mean(gamerfh$Avg.lettergrade)
 sd(gamerfh$Avg.lettergrade)
-
-
 ```
 
 ```{r}
@@ -325,7 +327,83 @@ nfh$Avg.lettergrade = gsub("B",3,nfh$Avg.lettergrade)
 nfh$Avg.lettergrade = gsub("C",2,nfh$Avg.lettergrade)
 nfh$Avg.lettergrade = as.numeric(nfh$Avg.lettergrade)
 
+# mean grade of all fh non-gamer students
 mean(nfh$Avg.lettergrade)
 sd(nfh$Avg.lettergrade)
 ```
+  
+```{r}
+# SRS estimate of mean grade of all gamer students
+gamer_data = c(gdt$avg.lettergrade, gamerfh$Avg.lettergrade)
+mean(gamer_data)
+```
+  
+```{r}
+# SRS estimate of mean grade of all non-gamer students
+nongamer_data = c(ndt$avg.lettergrade, nfh$Avg.lettergrade)
+mean(nongamer_data)
+```
+  
+<Cluster Sampling -  Estimators for Average Grade for Gamer and Non-gamer students>
+
+```{r}
+# ratio estimator of the mean of gamer students
+N = 150
+schoolid = c(1,2)
+M = c(122,56)
+y = list(gdt$avg.lettergrade,gamerfh$Avg.lettergrade)
+
+ybar = unlist(lapply(y,mean))
+that = M*ybar
+
+yhatbar_r = round(sum(that)/sum(M),2)
+
+yhatbar_r
+```
+  
+  
+```{r}
+# ratio estimator of the mean of non-gamer students
+M = c(122,56)
+y = list(ndt$avg.lettergrade,nfh$Avg.lettergrade)
+
+ybar = unlist(lapply(y,mean))
+that = M*ybar
+
+yhatbar_r = round(sum(that)/sum(M),2)
+
+yhatbar_r
+```
+  
+  
+<Standard Error for Each Estimators>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
