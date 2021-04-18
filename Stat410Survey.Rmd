@@ -27,6 +27,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Conclusion
 
+# Reference 
+
+@data{AB2/4LXJQS_2019,
+author = {DMTI Spatial Inc.},
+publisher = {Abacus Data Network},
+title = {{CanMap Postal Code Suite, v2019.3}},
+year = {2019},
+version = {V1},
+doi = {11272.1/AB2/4LXJQS},
+url = {https://hdl.handle.net/11272.1/AB2/4LXJQS}
+}
+
 
 
 ```{r message=FALSE, warning=FALSE}
@@ -36,6 +48,9 @@ library(survey)
 library(ggplot2)
 library(tidyverse)
 library(patchwork)
+library(gmodels)
+library(vcd)
+library(data.table)
 ```
 
 
@@ -48,6 +63,9 @@ gamerData <- subset(data, Gamer.Y.N.==1)
 
 # Subset Non-Gamer students, n=21
 nongamerData <- subset(data, Gamer.Y.N.==0)
+
+# Gives an idea of the data
+glimpse(data)
 ```
 
 
@@ -56,7 +74,7 @@ nongamerData <- subset(data, Gamer.Y.N.==0)
 
 ```{r}
 count(data, c('Gender'))
-data %>% count(Gamer.Y.N., Age)
+data %>% count(Gamer.Y.N.)
 ```
 
 
@@ -175,16 +193,36 @@ Impressions on the dataset:
 
 Fig.1 indicates that the majority of the students' grades lie in A's and B' and the few who are scoring C's are mainly Men.
 
-Fig.2 
+Fig.2 indicates that most of the students sampled are ages 16 and 17.
+
+Fig.3 indicates that there are only Men in the "16 or more" time played category and that most girls prefer to play "1 to 5" hours.
+
+Fig. 4 indicates that most gamers play on the weekend.
+
+Fig. 5 indicates that most gamers play after their homework is finished. 
+
+Fig. 6 indicates that most gamers are casual players.
+
+Fig. 7 indicates that most of the gamers prefer console over PC and mobile. 
 
 
 
 
 
 ```{r}
-data$count =1
+
+gamerData$count =1
 cont.df = as.data.frame(gamerData %>% select(Avg.lettergrade,Time.played,count) %>% group_by(Avg.lettergrade,Time.played) %>% summarise(freq = sum(count)))
 cont.df
+
+TimeGradeTable <- xtabs(formula = freq~Time.played+Avg.lettergrade, data=cont.df)
+TimeGradeTable
+
+CrossTable(gamerData$Avg.lettergrade,gamerData$Gender)
+
+oddsRat <- oddsratio(TimeGradeTable, log=FALSE)
+summary(oddsRat)
+
 ```
 
 
@@ -192,10 +230,48 @@ cont.df
 
 
 
+#### Do gamers perform better than non-gamers
+```{r}
+# Creates the df for the Gamer data 
+gamerData$count =1
+cont.df = as.data.frame(gamerData %>% select(Avg.lettergrade,Gamer.Y.N.,count) %>% group_by(Avg.lettergrade,Gamer.Y.N.) %>% summarise(freq = sum(count)))
+
+# Creates the table and we add 0.5 to every value due to Haldane-Anscombe correction
+gamerGradeTable <- xtabs(formula = freq~Gamer.Y.N.+Avg.lettergrade, data=cont.df)
+gamerGradeTable <- gamerGradeTable[,]+0.5
+gamerGradeTable
+
+# Creates the df for the Non-Gamer data 
+nongamerData$count =1
+cont.df = as.data.frame(nongamerData %>% select(Avg.lettergrade,Gamer.Y.N.,count) %>% group_by(Avg.lettergrade,Gamer.Y.N.) %>% summarise(freq = sum(count)))
+
+# Creates the table and we add 0.5 to every value due to Haldane-Anscombe correction
+nongamerGradeTable <- xtabs(formula = freq~Gamer.Y.N.+Avg.lettergrade, data=cont.df)
+nongamerGradeTable <- nongamerGradeTable[,]+0.5
+nongamerGradeTable
+
+# Calculating OR 
+OR_AB = (gamerGradeTable[1]*nongamerGradeTable[2])/(gamerGradeTable[2]*nongamerGradeTable[1])
+OR_AB
+OR_AC = (gamerGradeTable[1]*nongamerGradeTable[3])/(gamerGradeTable[3]*nongamerGradeTable[1])
+OR_AC
+OR_BC = (gamerGradeTable[2]*nongamerGradeTable[3])/(gamerGradeTable[3]*nongamerGradeTable[2])
+OR_BC
+
+# Calculating the CI 
+ci_AB <- exp(log(OR_AB) + c(-1,1) * qnorm(0.975) * sqrt( (1/gamerGradeTable[1]) + (1/gamerGradeTable[2]) +
+                                                (1/nongamerGradeTable[1]) + (1/nongamerGradeTable[2]) ))
+ci_AB
+ci_AC <- exp(log(OR_AC) + c(-1,1) * qnorm(0.975) * sqrt( (1/gamerGradeTable[1]) + (1/gamerGradeTable[3]) +
+                                                (1/nongamerGradeTable[1]) + (1/nongamerGradeTable[3]) ))
+ci_AC
+ci_BC <- exp(log(OR_BC) + c(-1,1) * qnorm(0.975) * sqrt( (1/gamerGradeTable[2]) + (1/gamerGradeTable[3]) +
+                                                (1/nongamerGradeTable[2]) + (1/nongamerGradeTable[3]) ))
+ci_BC
 
 
 
-
+```
 
 
 
